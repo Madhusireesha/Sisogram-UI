@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisogram Login</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    
+<link 
+href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial,
+    sans-serif;
+             background: 
+    linear-gradient(135deg,  #ff758c,  
+    #ff7eb3);
+             height:  100vh;
+             display:  flex;
+             justify-content: center; 
+             align-items:  center;
+            }
+
+          .container  {
+              background: white;
+              padding:  30px;
+              width: 300px;
+              border-radius:  15px;
+              box-shadow:  0 10px 30px
+    rgba(0, 0, 0, 0.2); 
+                     text-align: center;           
+          }
+
+          .logo {
+            text-align: center;
+            margin-bottom:  25px;
+          }
+          
+          .logo i  {
+            font-size:  60px;
+            color: #ff4b7d;
+            display:  block;
+            margin-bottom:  18px;
+          }
+
+          .logo h1 {
+             font-family:  'pacifico', cursive;
+             font-size:  40px;
+             font-weight:  600;
+             color:  #ff4b7d;
+             margin:  0; 
+             margin-top:  -20px;
+             letter-spacing:  1px;
+         }
+          h1 {
+             margin-bottom: 20px;
+             color:  #ff4b7d;
+          }
+
+          .input-box {
+              margin-bottom:  15px;
+              text-align:  left;        
+          }
+
+          .input-box label {
+              display:  block;
+              margin-bottom:  5px;
+              font-size: 14px;
+          }
+
+          .input-box input {
+              width:  100%;
+              padding: 10px;
+              padding-right:  45px;
+              border: 1px solid #ccc;
+              border-radius:  8px;
+              box-sizing:  border-box;
+          }
+
+          .password-box  {
+            position:  relative;
+          }
+
+          .password-box i {
+             position: absolute;
+             right:  17px;
+             top:   75%;
+             transform:  translateY(-50%);
+             font-size:   16px;
+             color:  #ff4b7d;
+             cursor: pointer;
+          }
+
+         .input:focus { 
+             border: 2px solid deeppink  !important;
+         }
+         
+         #message {
+           text-align: center;
+           font-size:  13px;
+           font-weight:  500;
+           color:  #e74c3c;
+           margin-top:   8px;
+         }
+
+          button {
+              width:  100%;
+              padding:  10px;
+              background:  #ff4b7d;
+              color:  white;
+              border:  none;
+              border-radius:  8px;
+              cursor: pointer;
+
+              font-size:  18px;
+
+              font-weight: 600;
+              letter-spacing: 1px;
+
+              text-transform:  uppercase;
+          }
+
+          button:hover {
+              background:  #e8436f; 
+          }
+
+          .footer {
+              margin-top:  15px;
+              font-size:  13px;
+          }
+
+          .footer a {
+              color:  #ff4b7d;
+              text-decoration:  none;
+         }
+    </style>
+ </head>
+ 
+ <body>
+    <h1>
+       
+<div class="container">
+
+    <div class="logo">
+      <i class="fa-brands fa-instagram"></i>
+      <h1>Sisogram</h1>
+    </div>  
+        
+    
+    <form onsubmit="saveData();  return false;">
+              <div class="input-box">
+                   <label>Username</label>
+                   <input type="text" id="username"
+                   placeholder="Enter your name">                                    
+              </div>
+
+              <div class="input-box">
+                   <label>Email</label>
+                   <input type="email" id="email"
+                   placeholder="Enter your email">                  
+            </div>
+
+            <div class="input-box password-box"> 
+              <label>Password</label>  
+            <input type="password" id="password"
+            placeholder="Enter your password">
+            <i id = "eyeIcon"  class="fa-solid fa-eye"
+            onclick="togglePassword()"></i>
+            </div>
+
+
+           
+           <button type="button"
+           onclick="loginUser()">Login</button>
+
+           <p id="message"  style="text-align: center;
+           font-size: 14px; margin-top: 10px;"></p>
+
+          </form>  
+          
+          <div class="footer">
+              Don't have an account ? 
+      <a href="signup.html">Sign up</a>        
+          </div>
+     </div>
+
+     <script>
+     function saveData()  {
+        let username =
+     document.getElementById("username").value;
+        let email = 
+     document.getElementById("email").value;
+      let password = 
+     document.getElementById("password").value;
+
+      
+       if (username === "" || email === "" ||
+     password === "") {
+        alert("please fill all fields");
+        return;
+     }     
+
+         console.log(username, email, password);
+
+       localStorage.setItem("username", username);
+       localStorage.setItem("email", email);
+       localStorage.setItem("password", password);
+
+       alert("Saved"); 
+     }
+
+     function loginUser() {
+      
+       let username = 
+     document.getElementById("username").value;
+       let password = 
+     document.getElementById("password").value;
+       let message = 
+     document.getElementById("message");   
+     
+       if (username === "" ||  password === "") {
+         
+           message.style.color = "red";
+           message.innerText = "Please fill all fields";
+         return;
+     }
+     
+       let storedUsername = 
+     localStorage.getItem("username");
+       let storedPassword = 
+     localStorage.getItem("password");
+     
+     if (
+       username === storedUsername &&
+       password === storedPassword) {
+               message.style.color = "green";
+               message.innerText = "Login successfull";
+               
+               
+       document.getElementById("username").style.border = "";
+       document.getElementById("password").style.border = "";
+
+       } else {
+
+                message.style.color = "red";
+                message.innerText = "The username or password you entered is incorrect"
+
+
+        document.getElementById("username").style.border = "2px solid red";
+        document.getElementById("password").style.border = "2px solid red";
+     } 
+  }
+
+     function togglePassword() {
+       let passwordInput = 
+     document.getElementById("password");
+       let eyeIcon = 
+     document.getElementById("eyeIcon");                                   
+
+       if (passwordInput.type === "password") {
+         passwordInput.type = "text";
+
+         eyeIcon.classList.remove("fa-eye");
+         eyeIcon.classList.add("fa-eye-slash");
+
+       } else {
+         passwordInput.type = "password";
+
+
+         eyeIcon.classList.remove("fa-eye-slash");
+             eyeIcon.classList.add("fa-eye");
+       }
+    }   
+     
+     window.onload = function() {
+
+     document.getElementById("username").value
+     = localStorage.getItem("username") || "";
+       document.getElementById("email").value =
+      localStorage.getItem("email") || "";
+      
+      document.getElementById("password").value
+      = localStorage.getItem("password") || "";
+     };
+     </script>
+    
+     </body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+ 
+
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
+ 
+
+<style> 
+       body {
+          font-family: 'poppins', sans-serif;
+          background:  linear-gradient(135deg, #ff758c, #ff7eb3);
+          display: flex;
+          justify-content:  center;
+          align-items:  center;
+          height:  100vh;
+          margin:  0;
+       }
+
+       .container {
+         background: rgba(255, 255, 255, 0.2);
+
+         backdrop-filter: blur(15px);
+         -webkit-backdrop-filter: blur(15px);
+
+         padding:  35px 28px;
+         width:  340px;
+         border:  1px solid rgba(255,255,255,0.35);
+         border-radius:  28px;
+         text-align:  center;
+         box-shadow:  0 10px 35px rgba(0,0,0,0.18),
+                      0  0   12px  rgba(255,255,255,0.15);
+       } 
+
+       h2 {
+         font-family:  'montserrat',  sans-serif;
+         text-transform:  capitalize;
+         margin-top: -10px;
+         font-size:  55px;
+         font-weight:  700;
+         letter-spacing:  1px;
+         color: #e63e72;
+         margin-bottom:  50px;
+       }
+
+       
+        .input-box {
+           position: relative;
+           margin-bottom:  42px; 
+       }
+
+         .input-box input {
+           width:  100%;
+           padding:  0 20px;
+           padding-right:  40px;
+           padding-top: 12px 20px 0 20px;
+           background:  #f9f9f9;
+           color:  #333;
+           height:  54px;
+           line-height:  45px;
+           border:  1px solid rgba(255,255,255,0.4);
+           outline:  none;
+           border-radius: 16px;
+           font-size:  17px;
+           transition: 0.3s ease;
+           box-shadow:  0 8px 32px rgba(0,0,0,0.2); 
+           box-sizing:  border-box;
+       }
+
+         .input-box input:focus + label {
+            box-shadow: 
+            0 8px 32px rgba(0,0,0,0.2),
+            0 0 10px rgba(255,255,255,0.5);
+       }  
+
+         .input-box label {
+           position: absolute;
+           left:  18px;
+           top:  50%;
+           transform:  translateY(-50%);
+
+           color:  #888;
+
+           background:  white;
+          
+           padding:  0 4px;
+
+           font-size:  16px;
+           
+           transition:  0.3s ease;
+
+           pointer-events:  none;
+
+           z-index:  1;
+        }
+
+        .input-box input:focus + label,
+        .input-box input:not(:placeholder-shown) +
+       label {
+          top: -15px;
+          left:  15px;
+
+          font-size:  18px;
+          font-weight:  600;
+
+          color:  #d6336c;
+          background:  rgba(255,255,255,0.85);
+
+          padding: 0 6px;
+          border-radius:  6px;
+          z-index:  1;
+       }
+
+        .password-box {
+         position:  relative;
+       }
+
+        .password-box i {
+           position:  absolute;
+           right:  15px;
+           top:  50px;
+           transform:  translateY(-50%);
+           cursor:  pointer;
+        }
+
+       .password-box input {
+         padding-right:  40px;
+       }
+
+       .password-box i {
+          position: absolute;
+          right:  15px;
+          top:    50%;
+          transform:  translateY()(-50%);
+          font-size:  16px;
+          color:   #ff4b7d;
+          cursor: pointer;
+       }
+
+       input[type="password"]::-ms-reveal,
+       input[type="password"]::-ms-clear {
+           display:  none;
+       }
+
+       input:focus {
+         outline: none;
+         border:  2px solid #ff4b7d;
+         box-shadow:  0 0 6px rgba(255, 75, 125, 0.3);
+       }
+
+       button {
+         position: relative;
+         overflow: hidden;
+
+         width: 100%;
+         margin-top:  20px;
+         padding: 12px;
+         background: linear-gradient(135deg, #ff4b7d, #ff1e56);
+         color: white;
+         border:  none;
+         border-radius:  25px;
+         font-size:  17px;
+
+         font-weight:  600;
+
+         letter-spacing:  1px;
+
+         cursor: pointer;
+         text-transform:  uppercase;
+         transition:   0.3s ease;
+         box-shadow:  0 4px 10px rgba(255, 75, 125, 0.3);
+       }
+
+       button:hover {
+         background:  linear-gradient(135deg, #ff1e56, #ff4b7d);
+         transform:  scale(1.05);
+
+         box-shadow:  0 8px 20px rgba(255, 75, 125, 0.6);
+       }
+
+       button:active {
+         transform: scale(0.97);
+         box-shadow:  0 4px 10px rgba(0,0,0,0,2);
+       }
+
+       button .ripple {
+         position: absolute;
+         border-radius:  50%;
+         background:  rgba(255,255,255,0.6);
+         transform:  scale(0);
+         animation:  rippleEffect 0.6s linear;
+         pointer-events:  none;
+       }
+
+       @keyframes rippleEffect {
+         to {
+           transform:  scale(4);
+           opacity:  0;
+         }
+       }
+         
+       p {
+         margin-top:  10px;
+         font-size:  17px;
+       }
+
+       #signupMessage {
+          margin-top: 15px;
+          font-size:  16px;
+          font-weight: 600;
+          text-align:  center;
+          opacity:  1;
+       } 
+       
+       .login-link{
+          margin-top:  15px;
+          text-align:  center;
+          font-size:   16px;
+          color:  #222;
+       }
+
+       .login-link a{
+          color: crimson;
+          font-weight: 700;
+          text-decoration:  none;
+       }
+
+       .login-link a:hover{
+          text-decoration:  underline;
+       }
+       
+ </style>
+</head>
+
+<body>
+
+ <div class="container">
+  
+  <h2>Sign Up</h2>
+
+   <div class="input-box">
+    <input type="text"  id="signupUsername"
+ placeholder=" " required>
+
+    <label>Username</label>
+ </div>   
+
+  <div class="input-box">     
+    <input type="email"  id="signupEmail"
+placeholder=" " required>
+     <label>Email</label>
+  </div>    
+    
+   <div class="input-box">
+     <div class="password-box">
+    <input type="password"  id="signupPassword"
+ placeholder=" " required>
+    <label>Password</label>
+
+ <i id="eyeIcon" 
+ class="fas fa-eye"
+ onclick="togglePassword()"></i>
+   </div>
+ </div> 
+
+ 
+ <button onclick="goToLogin()">
+       SIGN UP
+   </button>
+
+ <p id="signupMessage"></p>
+   <p class="login-link">
+      Already have an account?
+     <a href="sireesha.html">Login</a>  
+   </p>
+
+</div>
+
+    <script>
+
+      function goToLogin() {
+         
+        const username = 
+
+     document.getElementById("signupUsername").value;
+     
+        const email = 
+
+     document.getElementById("signupEmail").value;
+     
+        const password = 
+
+     document.getElementById("signupPassword").value;
+     
+        console.log(username);
+        console.log(email);
+        console.log(password);
+
+        const message = 
+
+     document.getElementById("signupMessage");
+     
+        message.style.opacity = "1";
+        message.style.transform = "translateY(10PX)";
+
+        if(username === "" || email === "" ||
+      password === "") {
+
+        message.style.color = "red";
+        message.innerText = "please fill all fields";
+
+        message.style.opacity = "1";
+        message.style.transform = "translateY(0)";
+
+           return;
+
+      }
+        
+      else if(!email.includes("@")) {
+
+        message.style.color = "red";
+        message.innerText = "Enter valid email";
+
+        message.style.opacity = "1"
+        message.style.transform = "translateY(0)";
+
+           return;
+
+      }
+
+      else if(password.length < 6 ) {
+
+         message.style.color = "red";
+         message.innerText = "Password must contain 6 characters";
+
+         message.style.opacity = "1";
+         message.style.transform = "translateY(0)";
+
+           return;
+
+      }
+
+      else {
+
+        localStorage.setItem("username", username);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
+
+        message.innerText = "Signup Successful";
+        message.style.color = "lightgreen";
+
+        message.style.opacity = "0";
+        message.style.transform = "translateY(10px)";
+
+        setTimeout(()  => {
+
+          message.style.transition = "all 0.5s ease";
+          message.style.opacity = "1";
+          message.style.transform = "translateY(0)";
+
+        },  100);
+
+        setTimeout(()  => {
+
+          window.location.href = "sireesha.html";
+
+        },  1000);
+
+      }
+
+   }
+      
+
+   function togglePassword() {
+
+             let input = 
+
+           document.getElementById("signupPassword");
+       
+            let icon = 
+
+          document.getElementById("eyeIcon");
+
+          if (input.type === "password") {
+
+         input.type = "text";
+
+         icon.classList.remove("fa-eye");
+         icon.classList.add("fa-eye-slash");
+
+         console.log(icon.className);
+
+       }
+
+       else {
+
+         input.type = "password";
+
+         icon.classList.remove("fa-eye-slash");
+         icon.classList.add("fa-eye");
+
+       }
+
+     }
+
+      const button = 
+      document.querySelector("button");
+
+      document.addEventListener("click", function (e) {
+
+        const circle = 
+      document.createElement("span");
+        circle.classList.add("ripple");
+        
+        const rect = 
+      button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+
+        circle.style.width = circle.style.height = size + "px";
+        circle.style.left = e.clientX - rect.left - size / 2 + "px";
+        circle.style.top = e.clientY - rect.top - size / 2 + "px";
+
+        button.appendChild(circle);
+
+        setTimeout(()  => {
+          circle.remove();
+        },  600);
+      });
+
+    
+     </script>
+
+</body> 
+</html>
