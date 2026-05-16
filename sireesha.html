@@ -152,23 +152,27 @@ href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="style
     </div>  
         
     
-    <form onsubmit="saveData();  return false;">
+    <form onsubmit="saveData();  return false;"
+     autocomplete="off">
               <div class="input-box">
                    <label>Username</label>
                    <input type="text" id="username"
-                   placeholder="Enter your name">                                    
+                   placeholder="Enter your name"
+                   autocomplete="off">                                    
               </div>
 
               <div class="input-box">
                    <label>Email</label>
                    <input type="email" id="email"
-                   placeholder="Enter your email">                  
+                   placeholder="Enter your email"
+                   autocomplete="off">                  
             </div>
 
             <div class="input-box password-box"> 
               <label>Password</label>  
             <input type="password" id="password"
-            placeholder="Enter your password">
+            placeholder="Enter your password"
+            autocomplete="new-password">
             <i id = "eyeIcon"  class="fa-solid fa-eye"
             onclick="togglePassword()"></i>
             </div>
